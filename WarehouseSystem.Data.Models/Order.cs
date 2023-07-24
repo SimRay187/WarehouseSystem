@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace WarehouseSystem.Data.Models
 {
-    using static Common.EntityValidationConstants.Request;
+    using static Common.EntityValidationConstants.Order;
 
-    public class Request
+    public class Order
     {
-        public Request ()
+        public Order ()
         { 
             this.Id = Guid.NewGuid(); 
         }
@@ -24,30 +24,32 @@ namespace WarehouseSystem.Data.Models
         [MaxLength(TitleMaxLength)]
         public string Title { get; set; } = null!;
 
+        
+        public IEnumerable<Product> Products { get; set; } = new List<Product>();
+
         [Required]
-        public string Products { get; set; } = null!;
-
-        public int ProductsCount { get; set; }
-
         public DateTime CreatedOn { get; set; }
 
+        [Required]
         public DateTime Deadline { get; set; }
 
-        [Required]
+        
         [MaxLength(DescriptionMaxLength)]
-        public string Description { get; set; } = null!;
+        public string Description { get; set; } 
 
         [ForeignKey(nameof(Board))]
         public int BoardId { get; set; }
 
-        public virtual Board Board { get; set; } 
+        public virtual Board Board { get; set; }
+        
+        [ForeignKey(nameof(Firm))]
+        public int FirmId { get; set; }
 
         [Required]
         [MaxLength(FirmNameMaxLength)]
         public string Firm { get; set; } = null!;
 
-        [Required]
-        public string Creator { get; set; } = null!;
+        //ApplicationUser
 
     }
 }

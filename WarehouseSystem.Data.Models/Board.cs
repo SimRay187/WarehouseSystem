@@ -14,6 +14,6 @@ namespace WarehouseSystem.Data.Models
         [MaxLength(NameMaxLength)]
         public string Name { get; set; } = null!;
 
-
+        public IEnumerable<Order> Orders { get; set; } = new List<Order>();
     }
 }

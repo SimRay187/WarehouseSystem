@@ -17,7 +17,7 @@ namespace WarehouseSystem.Common
             public const int DescriptionMaxLength = 500;
 
         }
-        public static class Request
+        public static class Order
         {
             public const int TitleMinLength = 2;
             public const int TitleMaxLength= 50;

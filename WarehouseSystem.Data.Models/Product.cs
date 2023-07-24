@@ -11,8 +11,12 @@ namespace WarehouseSystem.Data.Models
 
     public class Product
     {
+        public Product()
+        {
+            this.Id = Guid.NewGuid();
+        }
         [Key]
-        public int Id { get; set; }
+        public Guid Id { get; set; }
 
         [Required]
         public string Name { get; set; } = null!;
@@ -29,8 +33,13 @@ namespace WarehouseSystem.Data.Models
         public DateTime BestBefore { get; set;}
 
         [Required]
-        public int Count { get; set; }
-        
-        public bool IsAvailable { get; set; } 
+        [DisplayFormat(DataFormatString = "{dd-MM-yyyy}")]
+        public DateTime DateAdded { get; set; }
+
+        [Required]
+        public int Quantity { get; set; }
+
+        [Required]
+        public int IsActive { get; set; } 
     }
 }

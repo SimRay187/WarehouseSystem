@@ -6,11 +6,7 @@ using System.Threading.Tasks;
 
 namespace WarehouseSystem.Data.Models
 {
-    using static Common.EntityValidationConstants.Employee;
-
-    public class Employee
+    public  class OrderProducts
     {
-
-
     }
 }
