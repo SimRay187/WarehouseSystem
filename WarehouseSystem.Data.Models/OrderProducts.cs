@@ -1,23 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WarehouseSystem.Data.Models
 {
-    public  class OrderProducts
+    public class OrderProducts
     {
         [ForeignKey(nameof(Order))]
-        public int OrderId { get; set; } 
+        public Guid OrderId { get; set; }
 
-        public Order Orders { get; set; } = null!;
+        public Order Order { get; set; } = null!;
 
         [ForeignKey(nameof(Product))]
-        public int ProductId { get; set; }
+        public Guid ProductId { get; set; }
 
-        public Product Products { get; set; } = null!;
+        public Product Product { get; set; } = null!;
 
         public int Quantity { get; set; }
     }

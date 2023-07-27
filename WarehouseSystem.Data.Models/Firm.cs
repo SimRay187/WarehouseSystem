@@ -12,7 +12,7 @@ namespace WarehouseSystem.Data.Models
     {
         public Firm()
         {
-            this.Id = Guid.NewGuid();
+            Id = Guid.NewGuid();
         }
         [Key]
         public Guid Id { get; set; }

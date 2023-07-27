@@ -22,6 +22,7 @@ namespace WarehouseSystem.Web
             {
                 options.SignIn.RequireConfirmedAccount = true;
             })
+                .AddRoles<IdentityRole<Guid>>()
                 .AddEntityFrameworkStores<WarehouseSystemDbContext>();
             builder.Services.AddControllersWithViews();
 

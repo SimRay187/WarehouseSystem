@@ -7,8 +7,13 @@ namespace WarehouseSystem.Data.Models
 
     public class Board
     {
+        public Board()
+        {
+            Id = Guid.NewGuid();
+        }
+
         [Key]
-        public int Id { get; set; }
+        public Guid Id { get; set; }
 
         [Required]
         [MaxLength(NameMaxLength)]

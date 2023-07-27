@@ -13,7 +13,7 @@ namespace WarehouseSystem.Data.Models
     {
         public Product()
         {
-            this.Id = Guid.NewGuid();
+            Id = Guid.NewGuid();
         }
         [Key]
         public Guid Id { get; set; }
@@ -32,7 +32,7 @@ namespace WarehouseSystem.Data.Models
 
         [Required]
         [DisplayFormat(DataFormatString = "{dd-MM-yyyy}")]
-        public DateTime BestBefore { get; set;}
+        public DateTime BestBefore { get; set; }
 
         [Required]
         [DisplayFormat(DataFormatString = "{dd-MM-yyyy}")]
@@ -42,6 +42,6 @@ namespace WarehouseSystem.Data.Models
         public int Quantity { get; set; }
 
         [Required]
-        public int IsActive { get; set; } 
+        public int IsActive { get; set; }
     }
 }

@@ -13,9 +13,9 @@ namespace WarehouseSystem.Data.Models
 
     public class Order
     {
-        public Order ()
-        { 
-            this.Id = Guid.NewGuid(); 
+        public Order()
+        {
+            this.Id = Guid.NewGuid();
         }
 
         [Key]
@@ -25,7 +25,7 @@ namespace WarehouseSystem.Data.Models
         [MaxLength(TitleMaxLength)]
         public string Title { get; set; } = null!;
 
-        public IEnumerable<OrderProducts>OrdersProducts  { get; set; } = new List<OrderProducts>();
+        public IEnumerable<OrderProducts> OrdersProducts { get; set; } = new List<OrderProducts>();
 
         [Required]
         public DateTime CreatedOn { get; set; }
@@ -38,19 +38,16 @@ namespace WarehouseSystem.Data.Models
         public string Description { get; set; } = null!;
 
         [ForeignKey(nameof(Board))]
-        public int BoardId { get; set; }
+        public Guid BoardId { get; set; }
 
-        [ForeignKey(nameof(BoardId))]
         public virtual Board Board { get; set; } = null!;
 
         [ForeignKey(nameof(Firm))]
-        public int FirmId { get; set; }
+        public Guid FirmId { get; set; }
 
-        [Required]
-        [MaxLength(FirmNameMaxLength)]
-        
-        public string Firm { get; set; } = null!;
+        public Firm Firm { get; set; } = null!;
 
+        [ForeignKey(nameof(Employee))]
         public Guid EmployeeId { get; set; }
 
         public ApplicationUser Employee { get; set; } = null!;
