@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -24,8 +25,7 @@ namespace WarehouseSystem.Data.Models
         [MaxLength(TitleMaxLength)]
         public string Title { get; set; } = null!;
 
-        
-        public IEnumerable<Product> Products { get; set; } = new List<Product>();
+        public IEnumerable<OrderProducts>OrdersProducts  { get; set; } = new List<OrderProducts>();
 
         [Required]
         public DateTime CreatedOn { get; set; }
@@ -33,23 +33,27 @@ namespace WarehouseSystem.Data.Models
         [Required]
         public DateTime Deadline { get; set; }
 
-        
+
         [MaxLength(DescriptionMaxLength)]
-        public string Description { get; set; } 
+        public string Description { get; set; } = null!;
 
         [ForeignKey(nameof(Board))]
         public int BoardId { get; set; }
 
-        public virtual Board Board { get; set; }
-        
+        [ForeignKey(nameof(BoardId))]
+        public virtual Board Board { get; set; } = null!;
+
         [ForeignKey(nameof(Firm))]
         public int FirmId { get; set; }
 
         [Required]
         [MaxLength(FirmNameMaxLength)]
+        
         public string Firm { get; set; } = null!;
 
-        //ApplicationUser
+        public Guid EmployeeId { get; set; }
+
+        public ApplicationUser Employee { get; set; } = null!;
 
     }
 }

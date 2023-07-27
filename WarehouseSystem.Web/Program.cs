@@ -5,6 +5,8 @@ namespace WarehouseSystem.Web
     using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
     using WarehouseSystem.Data;
+    using WarehouseSystem.Data.Models;
+
     public class Program
     {
         public static void Main(string[] args)
@@ -13,14 +15,14 @@ namespace WarehouseSystem.Web
 
             // Add services to the container.
             string connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
-            builder.Services.AddDbContext<ApplicationDbContext>(options =>
+            builder.Services.AddDbContext<WarehouseSystemDbContext>(options =>
                 options.UseSqlServer(connectionString));
 
-            builder.Services.AddDefaultIdentity<IdentityUser>(options =>
+            builder.Services.AddDefaultIdentity<ApplicationUser>(options =>
             {
                 options.SignIn.RequireConfirmedAccount = true;
             })
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+                .AddEntityFrameworkStores<WarehouseSystemDbContext>();
             builder.Services.AddControllersWithViews();
 
             WebApplication app = builder.Build();

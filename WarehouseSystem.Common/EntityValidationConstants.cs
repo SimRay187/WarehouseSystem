@@ -50,6 +50,15 @@ namespace WarehouseSystem.Common
             public const int PhoneNumberMinLength = 7;
             public const int PhoneNumberMaxLength = 15;
         }
+
+        public static class Firm
+        {
+            public const int FirmNameMinLength = 2;
+            public const int FirmNameMaxLength = 100;
+
+            public const int BulstatMinLength = 3;
+            public const int BulstatMaxLength = 12;
+        }
     }
 
 }

@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace WarehouseSystem.Data.Models
 {
+    using static Common.EntityValidationConstants.Firm;
     public class Firm
     {
         public Firm()
@@ -17,9 +18,15 @@ namespace WarehouseSystem.Data.Models
         public Guid Id { get; set; }
 
         [Required]
+        [MaxLength(FirmNameMaxLength)]
         public string Name { get; set; } = null!;
 
-        public string Description { get; set; }
+        [Required]
+        [MaxLength(BulstatMaxLength)]
+        public string Bulstat { get; set; } = null!;
+
+        [Required]
+        public string Description { get; set; } = null!;
 
         [Required]
         public string Address { get; set; } = null!;
