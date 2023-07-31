@@ -4,12 +4,12 @@ using System.ComponentModel.DataAnnotations;
 namespace WarehouseSystem.Data.Models
 {
     using static Common.EntityValidationConstants.Employee;
-    
-     public class ApplicationUser : IdentityUser<Guid>
+
+    public class ApplicationUser : IdentityUser<Guid>
     {
         [Required]
         [MaxLength(FirstNameMaxLength)]
-        public string FirstName { get; set; }=null!;
+        public string FirstName { get; set; } = null!;
 
         [Required]
         [MaxLength(SecondNameMaxLength)]
@@ -20,7 +20,7 @@ namespace WarehouseSystem.Data.Models
         public string LastName { get; set; } = null!;
 
         [Required]
-        [Range(18,100)]
+        [Range(18, 100)]
         public int Age { get; set; }
 
 
@@ -33,5 +33,5 @@ namespace WarehouseSystem.Data.Models
          */
 
     }
-    
+
 }

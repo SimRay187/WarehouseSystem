@@ -25,6 +25,7 @@ namespace WarehouseSystem.Data.Models
         [MaxLength(TitleMaxLength)]
         public string Title { get; set; } = null!;
 
+
         public IEnumerable<OrderProducts> OrdersProducts { get; set; } = new List<OrderProducts>();
 
         [Required]

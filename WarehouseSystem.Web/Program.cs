@@ -1,5 +1,3 @@
-
-
 namespace WarehouseSystem.Web
 {
     using Microsoft.AspNetCore.Identity;
@@ -20,10 +18,16 @@ namespace WarehouseSystem.Web
 
             builder.Services.AddDefaultIdentity<ApplicationUser>(options =>
             {
-                options.SignIn.RequireConfirmedAccount = true;
+                options.SignIn.RequireConfirmedAccount = builder.Configuration.GetValue<bool>("Identity:SignIn:RequireConfirmedAccount");
+                options.Password.RequireLowercase = builder.Configuration.GetValue<bool>("Identity:Password:RequireLowercase");
+                options.Password.RequireUppercase = builder.Configuration.GetValue<bool>("Identity:Password:RequireUppercase");
+                options.Password.RequireNonAlphanumeric = builder.Configuration.GetValue<bool>("Identity:Password:RequireNonAlphanumeric");
+                options.Password.RequiredLength = builder.Configuration.GetValue<int>("Identity:Password:RequiredLength");
+
             })
                 .AddRoles<IdentityRole<Guid>>()
                 .AddEntityFrameworkStores<WarehouseSystemDbContext>();
+
             builder.Services.AddControllersWithViews();
 
             WebApplication app = builder.Build();
@@ -49,9 +53,10 @@ namespace WarehouseSystem.Web
             app.UseAuthorization();
 
             app.MapDefaultControllerRoute();
-            app.MapRazorPages();
+            //app.MapRazorPages();
 
             app.Run();
         }
+
     }
 }
